@@ -9,7 +9,7 @@ class Student
 	int marks;	
 }
 
-public class Demo {
+public class ArrayObjects {
 	public static void main(String[] args) 
 	{
 		Student s1=new Student();
