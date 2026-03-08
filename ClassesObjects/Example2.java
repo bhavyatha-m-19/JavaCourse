@@ -35,3 +35,11 @@ public class Example2 {
         s2.display();
     }
 }
+
+
+// Why Static?
+// Because class Student is inside another class (Example2).
+// Static class Student is only valid inside another class.
+// You cannot write static class Student at top level. at that time class should be made public.
+// In java, a class inside another class is called a nested class.
+// When we make it static, it means: The inner class DOES NOT need an object of Example2 class to be created.
