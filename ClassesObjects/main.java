@@ -1,6 +1,6 @@
 package ClassesObjects;
 
-public class main {
+public class Main {
     public static void main(String[] args){
         classes c1 =  new classes();
 
