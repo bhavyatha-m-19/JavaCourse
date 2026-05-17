@@ -2,29 +2,28 @@ package BasicMaths;
 
 public class PowerCalculation {
 
-    public static double myPow(double x, int n) {
+    public static double myPow(double base, int exponent) {
         // Use a long variable to safely handle Integer.MIN_VALUE without overflow
-        long nn = n;
+        long remainingPower = exponent;
         
-        // If the exponent is negative, convert it to positive 
-        // and invert the base (e.g., 2^-2 becomes (1/2)^2)
-        if (nn < 0) {
-            x = 1 / x;
-            nn = -nn;
+        // If the exponent is negative, invert the base and make the power positive
+        if (remainingPower < 0) {
+            base = 1 / base;
+            remainingPower = -remainingPower;
         }
 
         double result = 1.0;
 
-        while (nn > 0) {
-            // If the power is odd
-            if (nn % 2 == 1) {
-                result = result * x;
-                nn = nn - 1; // Reduce power to make it even
+        while (remainingPower > 0) {
+            // Case 1: If the power is odd, multiply the result by the current base
+            if (remainingPower % 2 == 1) {
+                result = result * base;
+                remainingPower = remainingPower - 1; // Drop by 1 to make it even
             } 
-            // If the power is even
+            // Case 2: If the power is even, square the base and cut the power in half
             else {
-                x = x * x;   // Square the base
-                nn = nn / 2; // Cut the power in half
+                base = base * base;             // Square the base
+                remainingPower = remainingPower / 2; // Halve the power
             }
         }
 
@@ -32,19 +31,14 @@ public class PowerCalculation {
     }
 
     public static void main(String[] args) {
-        // Test Case 1: Standard positive exponent
-        double x1 = 2.0;
-        int n1 = 10;
-        System.out.println(x1 + "^" + n1 + " = " + myPow(x1, n1)); // Expected: 1024.0
+        // Test Case 1: Positive exponent
+        double base1 = 2.0;
+        int exp1 = 10;
+        System.out.println(base1 + "^" + exp1 + " = " + myPow(base1, exp1)); // Expected: 1024.0
 
         // Test Case 2: Negative exponent
-        double x2 = 2.0;
-        int n2 = -2;
-        System.out.println(x2 + "^" + n2 + " = " + myPow(x2, n2)); // Expected: 0.25
-
-        // Test Case 3: Exponent is 0
-        double x3 = 5.5;
-        int n3 = 0;
-        System.out.println(x3 + "^" + n3 + " = " + myPow(x3, n3)); // Expected: 1.0
+        double base2 = 2.0;
+        int exp2 = -2;
+        System.out.println(base2 + "^" + exp2 + " = " + myPow(base2, exp2)); // Expected: 0.25
     }
 }
